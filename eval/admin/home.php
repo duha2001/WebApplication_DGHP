@@ -33,7 +33,7 @@ $astat = array("Chưa được bắt đầu ","Đang diễn ra","Đã kết thú
               <div class="inner">
                 <h3><?php echo $conn->query("SELECT * FROM faculty_list ")->num_rows; ?></h3>
 
-                <p>Khoa</p>
+                <p>Giảng Viên</p>
               </div>
               <div class="icon">
                 <i class="fa fa-user-friends"></i>
