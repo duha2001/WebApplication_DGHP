@@ -56,7 +56,7 @@ function ordinal_suffix($num){
 			<hr>
 			<table width="100%">
 					<tr>
-						<td width="50%"><p><b>Khoa: <span id="fname"></span></b></p></td>
+						<td width="50%"><p><b>Tên GV: <span id="fname"></span></b></p></td>
 						<td width="50%"><p><b>Năm học: <span id="ay"><?php echo $_SESSION['academic']['year'].' - Học kì '.(ordinal_suffix($_SESSION['academic']['semester'])) ?></span></b></p></td>
 					</tr>
 					<tr>

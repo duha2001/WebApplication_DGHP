@@ -8,7 +8,7 @@ include '../db_connect.php';
 				<input type="hidden" name="academic_id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
 				<div id="msg" class="form-group"></div>
 				<div class="form-group">
-					<label for="" class="control-label">Khoa</label>
+					<label for="" class="control-label">GV</label>
 					<select name="" id="faculty_id" class="form-control form-control-sm select2">
 						<option value=""></option>
 						<?php 
@@ -59,7 +59,7 @@ include '../db_connect.php';
 				<table class="table table-condensed" id="r-list">
 					<thead>
 						<tr>
-							<th>Khoa</th>
+							<th>GV</th>
 							<th>Lớp</th>
 							<th>Môn học</th>
 							<th>Xóa</th>

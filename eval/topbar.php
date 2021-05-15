@@ -32,7 +32,7 @@
               <span>
                 <div class="d-felx badge-pill">
                   <span class=""><img src="assets/uploads/<?php echo $_SESSION['login_avatar'] ?>" alt="" class="user-img border "></span>
-                  <span><b><?php echo ucwords($_SESSION['login_firstname']) ?><?php echo ucwords($_SESSION['login_lastname']) ?></b></span>
+                  <span><b><?php echo ucwords($_SESSION['login_firstname']) ?></b><b> </b><b><?php echo ucwords($_SESSION['login_lastname']) ?></b></span>
                   <span class="fa fa-angle-down ml-2"></span>
                 </div>
               </span>

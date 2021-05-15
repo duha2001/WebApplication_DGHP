@@ -61,7 +61,7 @@
             <a href="#" class="nav-link nav-edit_faculty">
               <i class="nav-icon fas fa-user-friends"></i>
               <p>
-                Khoa
+                Giảng Viên
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

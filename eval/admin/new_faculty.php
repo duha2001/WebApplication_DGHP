@@ -8,16 +8,16 @@
 				<div class="row">
 					<div class="col-md-6 border-right">
 						<div class="form-group">
-							<label for="" class="control-label">Mã số Khoa</label>
+							<label for="" class="control-label">Mã số GV</label>
 							<input type="text" name="school_id" class="form-control form-control-sm" required value="<?php echo isset($school_id) ? $school_id : '' ?>"placeholder="VD: 001,002,003,..." required>
 						</div>
 						<div class="form-group">
-							<label for="" class="control-label">Tên Phân Loại Khoa</label>
-							<input type="Có thể bỏ trống" name="firstname" class="form-control form-control-sm" required value="<?php echo isset($firstname) ? $firstname : '' ?>"placeholder="Có thể bỏ trống nếu (không có)" required>
+							<label for="" class="control-label">Họ và tên lót GV</label>
+							<input type="Có thể bỏ trống" name="firstname" class="form-control form-control-sm" required value="<?php echo isset($firstname) ? $firstname : '' ?>"placeholder="Trần Văn, Huỳnh Anh, ...." required>
 						</div>
 						<div class="form-group">
-							<label for="" class="control-label">Tên Khoa</label>
-							<input type="text" name="lastname" class="form-control form-control-sm" required value="<?php echo isset($lastname) ? $lastname : '' ?>" placeholder="VD: CNTT, GDTH, SPTH, ...." required>
+							<label for="" class="control-label">Tên GV</label>
+							<input type="text" name="lastname" class="form-control form-control-sm" required value="<?php echo isset($lastname) ? $lastname : '' ?>" placeholder="VD: A, B, C, D,..." required>
 						</div>
 					</div>
 					<div class="col-md-6">

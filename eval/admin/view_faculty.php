@@ -23,7 +23,7 @@ foreach($qry as $k => $v){
       <div class="card-footer">
         <div class="container-fluid">
         	<dl>
-        		<dt>Mã số Khoa</dt>
+        		<dt>Mã số GV</dt>
         		<dd><?php echo $school_id ?></dd>
         	</dl>
         </div>

@@ -11,8 +11,8 @@
 				<thead>
 					<tr>
 						<th class="text-center">#</th>
-						<th>Mã số Khoa</th>
-						<th>Tên Khoa</th>
+						<th>Mã số GV</th>
+						<th>Tên GV</th>
 						<th>Email</th>
 						<th>Trạng thái</th>
 					</tr>
