@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 15, 2020 at 01:59 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th5 19, 2021 lúc 06:07 PM
+-- Phiên bản máy phục vụ: 10.4.18-MariaDB
+-- Phiên bản PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `evaluation_db`
+-- Cơ sở dữ liệu: `evaluation_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `academic_list`
+-- Cấu trúc bảng cho bảng `academic_list`
 --
 
 CREATE TABLE `academic_list` (
@@ -37,7 +36,7 @@ CREATE TABLE `academic_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `academic_list`
+-- Đang đổ dữ liệu cho bảng `academic_list`
 --
 
 INSERT INTO `academic_list` (`id`, `year`, `semester`, `is_default`, `status`) VALUES
@@ -48,7 +47,7 @@ INSERT INTO `academic_list` (`id`, `year`, `semester`, `is_default`, `status`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `class_list`
+-- Cấu trúc bảng cho bảng `class_list`
 --
 
 CREATE TABLE `class_list` (
@@ -59,18 +58,20 @@ CREATE TABLE `class_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `class_list`
+-- Đang đổ dữ liệu cho bảng `class_list`
 --
 
 INSERT INTO `class_list` (`id`, `curriculum`, `level`, `section`) VALUES
 (1, 'BSIT', '1', 'A'),
 (2, 'BSIT', '1', 'B'),
-(3, 'BSIT', '1', 'C');
+(3, 'BSIT', '1', 'C'),
+(4, 'ĐH', '2020-2021', 'K45-CNTT-A'),
+(5, 'Đại học', '2020-2021', 'K46.CNTT.A');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `criteria_list`
+-- Cấu trúc bảng cho bảng `criteria_list`
 --
 
 CREATE TABLE `criteria_list` (
@@ -80,17 +81,17 @@ CREATE TABLE `criteria_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `criteria_list`
+-- Đang đổ dữ liệu cho bảng `criteria_list`
 --
 
 INSERT INTO `criteria_list` (`id`, `criteria`, `order_by`) VALUES
-(1, 'Criteria 101', 0),
-(2, 'Criteria 102', 1);
+(1, 'TIÊU CHÍ 1', 0),
+(2, 'TIÊU CHÍ 2', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation_answers`
+-- Cấu trúc bảng cho bảng `evaluation_answers`
 --
 
 CREATE TABLE `evaluation_answers` (
@@ -100,7 +101,7 @@ CREATE TABLE `evaluation_answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `evaluation_answers`
+-- Đang đổ dữ liệu cho bảng `evaluation_answers`
 --
 
 INSERT INTO `evaluation_answers` (`evaluation_id`, `question_id`, `rate`) VALUES
@@ -112,12 +113,18 @@ INSERT INTO `evaluation_answers` (`evaluation_id`, `question_id`, `rate`) VALUES
 (2, 3, 4),
 (3, 1, 5),
 (3, 6, 5),
-(3, 3, 4);
+(3, 3, 4),
+(4, 1, 5),
+(4, 6, 5),
+(4, 3, 1),
+(5, 1, 5),
+(5, 6, 3),
+(5, 3, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation_list`
+-- Cấu trúc bảng cho bảng `evaluation_list`
 --
 
 CREATE TABLE `evaluation_list` (
@@ -132,18 +139,20 @@ CREATE TABLE `evaluation_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `evaluation_list`
+-- Đang đổ dữ liệu cho bảng `evaluation_list`
 --
 
 INSERT INTO `evaluation_list` (`evaluation_id`, `academic_id`, `class_id`, `student_id`, `subject_id`, `faculty_id`, `restriction_id`, `date_taken`) VALUES
 (1, 3, 1, 1, 1, 1, 8, '2020-12-15 16:26:51'),
 (2, 3, 2, 2, 2, 1, 9, '2020-12-15 16:33:37'),
-(3, 3, 1, 3, 1, 1, 8, '2020-12-15 20:18:49');
+(3, 3, 1, 3, 1, 1, 8, '2020-12-15 20:18:49'),
+(4, 3, 4, 5, 1, 2, 11, '2021-05-15 11:44:13'),
+(5, 3, 5, 6, 1, 2, 12, '2021-05-17 06:35:13');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faculty_list`
+-- Cấu trúc bảng cho bảng `faculty_list`
 --
 
 CREATE TABLE `faculty_list` (
@@ -158,16 +167,16 @@ CREATE TABLE `faculty_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `faculty_list`
+-- Đang đổ dữ liệu cho bảng `faculty_list`
 --
 
 INSERT INTO `faculty_list` (`id`, `school_id`, `firstname`, `lastname`, `email`, `password`, `avatar`, `date_created`) VALUES
-(1, '20140623', 'George', 'Wilson', 'gwilson@sample.com', 'd40242fb23c45206fadee4e2418f274f', '1608011100_avatar.jpg', '2020-12-15 13:45:18');
+(2, '002', 'Nguyễn Viết ', 'Hưng ', 'nguyenviethung@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1621072320_mustang_car_sports_car_163407_1400x1050.jpg', '2021-05-15 16:52:35');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `question_list`
+-- Cấu trúc bảng cho bảng `question_list`
 --
 
 CREATE TABLE `question_list` (
@@ -179,19 +188,19 @@ CREATE TABLE `question_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `question_list`
+-- Đang đổ dữ liệu cho bảng `question_list`
 --
 
 INSERT INTO `question_list` (`id`, `academic_id`, `question`, `order_by`, `criteria_id`) VALUES
-(1, 3, 'Sample Question', 0, 1),
-(3, 3, 'Test', 2, 2),
+(1, 3, 'Thầy cô có đi dạy đúng giờ', 0, 1),
+(3, 3, 'Huỳnh Bảo Lộc rất giỏi', 2, 2),
 (5, 0, 'Question 101', 0, 1),
-(6, 3, 'Sample 101', 4, 1);
+(6, 3, 'Có giao bài tập về nhà', 4, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restriction_list`
+-- Cấu trúc bảng cho bảng `restriction_list`
 --
 
 CREATE TABLE `restriction_list` (
@@ -203,18 +212,20 @@ CREATE TABLE `restriction_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `restriction_list`
+-- Đang đổ dữ liệu cho bảng `restriction_list`
 --
 
 INSERT INTO `restriction_list` (`id`, `academic_id`, `faculty_id`, `class_id`, `subject_id`) VALUES
 (8, 3, 1, 1, 1),
 (9, 3, 1, 2, 2),
-(10, 3, 1, 3, 3);
+(10, 3, 1, 3, 3),
+(11, 3, 2, 4, 4),
+(12, 3, 2, 5, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_list`
+-- Cấu trúc bảng cho bảng `student_list`
 --
 
 CREATE TABLE `student_list` (
@@ -230,18 +241,17 @@ CREATE TABLE `student_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `student_list`
+-- Đang đổ dữ liệu cho bảng `student_list`
 --
 
 INSERT INTO `student_list` (`id`, `school_id`, `firstname`, `lastname`, `email`, `password`, `class_id`, `avatar`, `date_created`) VALUES
-(1, '6231415', 'John', 'Smith', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 1, '1608012360_avatar.jpg', '2020-12-15 14:06:14'),
-(2, '101497', 'Claire', 'Blake', 'cblake@sample.com', '4744ddea876b11dcb1d169fadf494418', 2, '1608012720_47446233-clean-noir-et-gradient-sombre-image-de-fond-abstrait-.jpg', '2020-12-15 14:12:03'),
-(3, '123', 'Mike', 'Williams', 'mwilliams@sample.com', '3cc93e9a6741d8b40460457139cf8ced', 1, '1608034680_1605601740_download.jpg', '2020-12-15 20:18:22');
+(4, '4501104041', 'Huỳnh Anh', 'Dự', '450114041@student.hcmue.edu.vn', 'b2076d5589746fdaf440e2c8959206ed', 4, '1621078080_mustang_car_sports_car_163407_1400x1050.jpg', '2021-05-15 16:32:59'),
+(6, '4601104121', 'Trần Thị Bích ', 'Ngọc', 'ngocttb.cnthongtin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 5, 'no-image-available.png', '2021-05-17 06:33:28');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subject_list`
+-- Cấu trúc bảng cho bảng `subject_list`
 --
 
 CREATE TABLE `subject_list` (
@@ -252,18 +262,18 @@ CREATE TABLE `subject_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `subject_list`
+-- Đang đổ dữ liệu cho bảng `subject_list`
 --
 
 INSERT INTO `subject_list` (`id`, `code`, `subject`, `description`) VALUES
-(1, '101', 'Sample Subject', 'Test 101'),
-(2, 'ENG-101', 'English', 'English'),
-(3, 'M-101', 'Math 101', 'Math - Advance Algebra ');
+(1, 'MATH-201', 'Đại số tuyến tính', 'DSTT-01'),
+(2, 'ENG-101', 'English HP 1', 'English'),
+(3, 'M-101', 'Toán giải tích', 'MATH_GT');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_settings`
+-- Cấu trúc bảng cho bảng `system_settings`
 --
 
 CREATE TABLE `system_settings` (
@@ -276,16 +286,16 @@ CREATE TABLE `system_settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `system_settings`
+-- Đang đổ dữ liệu cho bảng `system_settings`
 --
 
 INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `address`, `cover_img`) VALUES
-(1, 'Faculty Evaluation System', 'info@sample.comm', '+6948 8542 623', '2102  Caldwell Road, Rochester, New York, 14608', '');
+(1, 'HỆ THỐNG ĐÁNH GIÁ HỌC PHẦN', 'duha.cnthongtin@gmail.com', '0366610949', '280 An Dương Vương, Quận 5, TPHCM', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -299,151 +309,152 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `avatar`, `date_created`) VALUES
-(1, 'Administrator', '', 'admin@admin.com', '0192023a7bbd73250516f069df18b500', '1607135820_avatar.jpg', '2020-11-26 10:57:04');
+(1, 'Huỳnh Anh', 'Dự', 'admin@admin.com', '0192023a7bbd73250516f069df18b500', '1621077900_night.jpg', '2020-11-26 10:57:04'),
+(2, 'Huynh Anh', 'Du', 'huynhanhdu2000@gmail.com', 'b2076d5589746fdaf440e2c8959206ed', '1621071060_mustang_car_sports_car_163407_1400x1050.jpg', '2021-05-15 16:31:53');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `academic_list`
+-- Chỉ mục cho bảng `academic_list`
 --
 ALTER TABLE `academic_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `class_list`
+-- Chỉ mục cho bảng `class_list`
 --
 ALTER TABLE `class_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `criteria_list`
+-- Chỉ mục cho bảng `criteria_list`
 --
 ALTER TABLE `criteria_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `evaluation_list`
+-- Chỉ mục cho bảng `evaluation_list`
 --
 ALTER TABLE `evaluation_list`
   ADD PRIMARY KEY (`evaluation_id`);
 
 --
--- Indexes for table `faculty_list`
+-- Chỉ mục cho bảng `faculty_list`
 --
 ALTER TABLE `faculty_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `question_list`
+-- Chỉ mục cho bảng `question_list`
 --
 ALTER TABLE `question_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `restriction_list`
+-- Chỉ mục cho bảng `restriction_list`
 --
 ALTER TABLE `restriction_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `student_list`
+-- Chỉ mục cho bảng `student_list`
 --
 ALTER TABLE `student_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subject_list`
+-- Chỉ mục cho bảng `subject_list`
 --
 ALTER TABLE `subject_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `system_settings`
+-- Chỉ mục cho bảng `system_settings`
 --
 ALTER TABLE `system_settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `academic_list`
+-- AUTO_INCREMENT cho bảng `academic_list`
 --
 ALTER TABLE `academic_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `class_list`
+-- AUTO_INCREMENT cho bảng `class_list`
 --
 ALTER TABLE `class_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `criteria_list`
+-- AUTO_INCREMENT cho bảng `criteria_list`
 --
 ALTER TABLE `criteria_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `evaluation_list`
+-- AUTO_INCREMENT cho bảng `evaluation_list`
 --
 ALTER TABLE `evaluation_list`
-  MODIFY `evaluation_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `evaluation_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `faculty_list`
+-- AUTO_INCREMENT cho bảng `faculty_list`
 --
 ALTER TABLE `faculty_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `question_list`
+-- AUTO_INCREMENT cho bảng `question_list`
 --
 ALTER TABLE `question_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `restriction_list`
+-- AUTO_INCREMENT cho bảng `restriction_list`
 --
 ALTER TABLE `restriction_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `student_list`
+-- AUTO_INCREMENT cho bảng `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `subject_list`
+-- AUTO_INCREMENT cho bảng `subject_list`
 --
 ALTER TABLE `subject_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `system_settings`
+-- AUTO_INCREMENT cho bảng `system_settings`
 --
 ALTER TABLE `system_settings`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
