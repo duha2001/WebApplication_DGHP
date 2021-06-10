@@ -1,4 +1,6 @@
 # WebApplication_DGHP
+**HUỲNH ANH DỰ - Khoa Công Nghệ Thông Tin Trường Đại Học Sư Phạm TPHCM**
+- HỆ THỐNG ĐÁNH GIÁ HỌC PHẦN - HCMUE
 - Link trang Web (bản demo còn có bug hình ảnh): http://35.232.140.171:41062/www/login.php
 - Dự án được làm Frontend sử dụng Framework Boostrap và Ajax
 - Về phía Backend được xử lý bằng ngôn ngữ PHP và cơ sở dữ liệu là MySQL
